@@ -44,7 +44,7 @@ export default function CategoryRail(){
     {categories.map((category,index)=>{
       const Icon=icons[index];
       const hasPromo=promoCategories.has(category);
-      return <Link href="#explore" key={category} className="category-item" data-active={activeIndex===index} aria-label={category} onMouseEnter={()=>setActiveIndex(index)} onFocus={()=>setActiveIndex(index)}>
+      return <Link href={`/tours/?category=${encodeURIComponent(category)}`} key={category} className="category-item" data-active={activeIndex===index} aria-label={category} onMouseEnter={()=>setActiveIndex(index)} onFocus={()=>setActiveIndex(index)}>
         <span className="category-icon"><Icon strokeWidth={1.4}/>{hasPromo&&<span className="category-promo" aria-label="10 percent off"><Percent size={11}/><b>10% OFF</b></span>}</span>
         <span className="category-label" aria-hidden="true"><span className="category-label-static">{category}</span><span className="category-label-track"><span>{category}</span><span>{category}</span></span></span>
       </Link>;

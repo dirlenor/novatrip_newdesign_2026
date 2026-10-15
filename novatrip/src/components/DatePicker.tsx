@@ -1,8 +1,8 @@
 'use client';
 import {useEffect,useRef,useState} from 'react';
 import {ChevronLeft,ChevronRight} from 'lucide-react';
-export default function DatePicker(){
- const [open,setOpen]=useState(false),[selected,setSelected]=useState<Date|null>(null),[month,setMonth]=useState(()=>new Date());
+export default function DatePicker({initialValue=''}:{initialValue?:string}){
+ const [open,setOpen]=useState(false),[selected,setSelected]=useState<Date|null>(initialValue?new Date(initialValue+'T00:00:00'):null),[month,setMonth]=useState(()=>new Date());
  const root=useRef<HTMLDivElement>(null);
  useEffect(()=>{const close=(e:PointerEvent)=>{if(!root.current?.contains(e.target as Node))setOpen(false)};const escape=(e:KeyboardEvent)=>{if(e.key==='Escape')setOpen(false)};document.addEventListener('pointerdown',close);document.addEventListener('keydown',escape);return()=>{document.removeEventListener('pointerdown',close);document.removeEventListener('keydown',escape)}},[]);
  const year=month.getFullYear(),index=month.getMonth(),offset=new Date(year,index,1).getDay(),days=new Date(year,index+1,0).getDate();
