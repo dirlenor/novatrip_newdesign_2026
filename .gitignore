@@ -1,0 +1,10 @@
+/NovaTrip-source.zip
+/asset-contact-sheet.png
+**/.openai/
+**/source-assets/
+**/node_modules/
+**/.next/
+**/out/
+**/qa/
+**/*.tsbuildinfo
+**/.env*
